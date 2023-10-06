@@ -1,7 +1,8 @@
 import argparse
 import pandas as pd
 import numpy as np
-from Preprocessing import Preprocessor
+from Utils import Preprocessor
+
 
 def main() -> None:
     pareser = argparse.ArgumentParser(description='multilayer perceptron')
@@ -19,6 +20,10 @@ def main() -> None:
 
     y = np.array(df[1])
     X = df.iloc[:, 2:].values
+    X = Preprocessor.min_max_scale(X)
+    X_train, y_train, X_test, y_test = Preprocessor.split_data(X, y)
+    
+        
     
     
 
